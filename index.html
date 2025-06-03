@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket Stock Viewer</title>
+  </head>
+  <body>
+    <h1>Stock Stream</h1>
+    <ul id="messages"></ul>
+
+    <!--
+    <script>
+      const socket = new WebSocket("ws://localhost:8000/ws/stocks/2");
+
+      socket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        const li = document.createElement("li");
+        li.textContent = `Nuevo valor: ${data.value} - ${data.timestamp}`;
+        document.getElementById("messages").appendChild(li);
+      };
+
+      socket.onopen = () => console.log("Conectado");
+      socket.onclose = () => console.log("Desconectado");
+    </script>
+    -->
+    <script>
+      const stockId = 2;
+      const messagesUl = document.getElementById("messages");
+
+      // Para evitar duplicados
+      const seenTimestamps = new Set();
+
+      // Función para agregar elementos a la lista si no están repetidos
+      function addValueToList(value, timestamp) {
+        if (!seenTimestamps.has(timestamp)) {
+          seenTimestamps.add(timestamp);
+          const li = document.createElement("li");
+          li.textContent = `Valor: ${value} - ${timestamp}`;
+          messagesUl.appendChild(li);
+        }
+      }
+
+      // 1. Obtener historial inicial por HTTP
+      async function loadHistory() {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/api/v1/stocks/${stockId}/values`
+          );
+          const data = await response.json();
+          data.forEach((entry) => addValueToList(entry.value, entry.timestamp));
+        } catch (err) {
+          console.error("Error al cargar historial:", err);
+        }
+      }
+
+      // 2. Conectarse al WebSocket para nuevos valores
+      function setupWebSocket() {
+        const socket = new WebSocket(
+          `ws://localhost:8000/ws/stocks/${stockId}`
+        );
+
+        socket.onmessage = function (event) {
+          const data = JSON.parse(event.data);
+          addValueToList(data.value, data.timestamp);
+        };
+
+        socket.onopen = () => console.log("WebSocket conectado");
+        socket.onclose = () => console.log("WebSocket desconectado");
+        socket.onerror = (err) => console.error("WebSocket error:", err);
+      }
+
+      // 3. Ejecutar ambos
+      loadHistory().then(setupWebSocket);
+    </script>
+  </body>
+</html>
