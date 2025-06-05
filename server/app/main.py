@@ -8,7 +8,6 @@ import asyncio
 
 from fastapi.middleware.cors import CORSMiddleware
 
-
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Statistics Stock API")
@@ -22,10 +21,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.on_event("startup")
 async def startup_event():
-    #asyncio.create_task(generate_stock_values_forever(stock_id=1, generator_type="random", interval=20.0))
+    #asyncio.create_task(generate_stock_values_forever(stock_id=2, generator_type="random", interval=20.0))
     asyncio.create_task(generate_stock_values_forever(stock_id=2, generator_type="brownian", interval=1.0))
 
 app.include_router(ws_endpoints.router)

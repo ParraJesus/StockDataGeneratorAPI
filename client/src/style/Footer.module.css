@@ -1,0 +1,16 @@
+.footer_container {
+  color: var(--font_4);
+  background-color: var(--bg_3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 160px;
+}
+
+.footer_p {
+  color: var(--font_2);
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+}

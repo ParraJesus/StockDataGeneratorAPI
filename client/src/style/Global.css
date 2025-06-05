@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --bg_1: #f4efec;
+  --bg_2: #e6ddd1;
+  --bg_3: #d6c8bc;
+  --bg_4: #bba99b;
+  --blue_1: #527293;
+  --blue_2: #32475c;
+  --green_1: #86c097;
+  --green_2: #467449;
+  --purple_1: #8e81b6;
+  --purple_2: #443c59;
+  --red_1: #ec6665;
+  --red_2: #b14149;
+  --gray_1: #b0b0b0;
+  --gray_2: #979797;
+  --font_1: #403d3b;
+  --font_2: #605b58;
+  --font_3: #8b8177;
+  --font_4: #f4efec;
+
+  --font_size_32: 2rem; /* 32px */
+  --font_size_24: 1.5rem; /* 24px */
+  --font_size_14: 0.875rem; /* 14px */
+  --font_size_48: 3rem; /* 48px */
+  --font_size_64: 4rem; /* 64px */
+}
+
+html {
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Albert Sans", "albert sans", sans-serif;
+}
+
+h1 {
+  color: var(--font_1);
+  font-size: var(--font_size_32);
+  font-weight: bold;
+  text-align: left;
+  margin: 20px 0;
+}
+
+h2 {
+  color: var(--font_2);
+  font-size: var(--font_size_24);
+  font-weight: bold;
+  text-align: left;
+  margin: 20px 0;
+}
+
+p {
+  color: var(--font_3);
+  font-size: var(--font_size_14);
+  text-align: justify;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--font_3);
+  margin: 40px 0;
+}

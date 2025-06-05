@@ -1,0 +1,7 @@
+.sidemenu {
+  width: 240px;
+  height: 100vh;
+  flex-grow: 1;
+  background-color: var(--bg_4);
+  color: var(--font_4);
+}
