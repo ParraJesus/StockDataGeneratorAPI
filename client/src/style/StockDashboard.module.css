@@ -1,0 +1,17 @@
+.card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+.metrics {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.metrics p {
+  margin: 0.25rem 0;
+}

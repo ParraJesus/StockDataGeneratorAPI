@@ -3,7 +3,9 @@ from math import exp, sqrt
 from app.data.base import StockValueGenerator
 
 class BrownianStockValueGenerator(StockValueGenerator):
-    def __init__(self, initial_value: float = 100.0, mu: float = 0.05, sigma: float = 0.2, dt: float = 1.0, min_value: float = -100.0, max_value: float = 5000.0):
+    def __init__(self, initial_value: float = 10.0, mu: float = 0.05,
+                sigma: float = 0.2, dt: float = 1.0, min_value: float = -100.0,
+                max_value: float = 200.0):
         self.current_value = initial_value
         self.mu = mu        # tasa de crecimiento esperada
         self.sigma = sigma  # volatilidad
@@ -20,7 +22,7 @@ class BrownianStockValueGenerator(StockValueGenerator):
             adjusted_mu = self.mu
 
         z = random.gauss(0, 1)  # variable aleatoria normal estándar
-        drift = (self.mu - 0.5 * self.sigma ** 2) * self.dt
+        drift = (adjusted_mu - 0.5 * self.sigma ** 2) * self.dt
         diffusion = self.sigma * sqrt(self.dt) * z
         self.current_value *= exp(drift + diffusion)
         return round(self.current_value, 2)
