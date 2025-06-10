@@ -5,18 +5,6 @@ import styles from "../style/StockDashboard.module.css";
 const ArimaStockCard = ({ predictionEntry, fullRealData }) => {
   const { inputData, predictionData, timestamp } = predictionEntry;
 
-  /*
-  // Obtener el último timestamp que tenía el inputData
-  const lastInputTimestamp = inputData[inputData.length - 1]?.timestamp;
-
-  // Agregar datos reales nuevos que llegaron después de la predicción
-  const extendedInputData = [
-    ...inputData,
-    ...fullRealData.filter(
-      (d) => new Date(d.timestamp) > new Date(lastInputTimestamp)
-    ),
-  ];*/
-
   const lastInputTimestamp = inputData[inputData.length - 1]?.timestamp;
   const n = predictionData.predictions.length;
 
