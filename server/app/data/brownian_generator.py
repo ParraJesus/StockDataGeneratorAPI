@@ -14,14 +14,12 @@ class BrownianStockValueGenerator(StockValueGenerator):
         self.max_value = max_value
 
     def generate(self) -> float:
-        """
         if self.current_value > 0.9 * self.max_value:
             adjusted_mu = 0.0  # detener crecimiento
         elif self.current_value < 1.1 * self.min_value:
             adjusted_mu = 0.1  # acelerar recuperación
         else:
             adjusted_mu = self.mu
-        """
 
         z = random.gauss(0, 1)  # variable aleatoria normal estándar
         #drift = (adjusted_mu - 0.5 * self.sigma ** 2) * self.dt

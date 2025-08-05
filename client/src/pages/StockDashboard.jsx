@@ -82,15 +82,16 @@ const Page = () => {
     <>
       <h1>{stock.name}</h1>
       <StockChart stockValues={stockValues} />
-      <form action="predictionData" onSubmit={handleSubmit}>
+      <form action="predictionData" onSubmit={handleSubmit} className={styles.formContainer} >
         <input
           type="number"
           name="arima_n"
           id="arima_n"
           value={arimaRequestData.n}
           onChange={handleChange}
+          className={styles.inputArima}
         />
-        <button type="submit">Generar predicción</button>
+        <button type="submit" className={styles.buttonArima}>Generar predicción</button>
       </form>
       <hr />
       <h2>Lista de predicciones</h2>
